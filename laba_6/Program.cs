@@ -26,27 +26,27 @@ namespace laba_6
 
         public void display()
         {
-            System.Console.WriteLine("Brand: " + autoBrand);
-            System.Console.WriteLine("Name: " + autoName);
-            System.Console.WriteLine("Cost: " + autoCost);
-            System.Console.WriteLine("Max speed: " + autoMax_speed);
-            System.Console.WriteLine("Year: " + autoYear);
-            System.Console.WriteLine(autoeng1.GetInfo());
+            Console.WriteLine("Brand: " + autoBrand);
+            Console.WriteLine("Name: " + autoName);
+            Console.WriteLine("Cost: " + autoCost);
+            Console.WriteLine("Max speed: " + autoMax_speed);
+            Console.WriteLine("Year: " + autoYear);
+            Console.WriteLine(autoeng1.GetInfo());
         }
 
         
         public void read()
         {
 
-            System.Console.WriteLine("Enter brand: ");
+            Console.WriteLine("Enter brand: ");
             this.autoBrand = System.Console.ReadLine();
-            System.Console.WriteLine("Enter name: ");
+            Console.WriteLine("Enter name: ");
             this.autoName = System.Console.ReadLine();
-            System.Console.Write("Cost: ");
+            Console.Write("Cost: ");
             this.autoCost = Convert.ToInt32(Console.ReadLine());
-            System.Console.Write("Max speed: ");
+            Console.Write("Max speed: ");
             this.autoMax_speed = Convert.ToInt32(Console.ReadLine());
-            System.Console.Write("Year: ");
+            Console.Write("Year: ");
             this.autoYear = Convert.ToInt32(Console.ReadLine());
             autoeng1.Read();
         }
@@ -73,11 +73,11 @@ namespace laba_6
         }
        public void Read()
         {
-            System.Console.Write("Enter the number of cylinders:");
+            Console.Write("Enter the number of cylinders:");
             this.cylinders = Convert.ToInt32(Console.ReadLine());
-            System.Console.Write("Enter capacity:");
+            Console.Write("Enter capacity:");
             this.capacity = Convert.ToInt32(Console.ReadLine());
-            System.Console.Write("Enter power:");
+            Console.Write("Enter power:");
             this.power = Convert.ToInt32(Console.ReadLine());
         }
     }
@@ -87,14 +87,14 @@ namespace laba_6
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Первое auto");
+            Console.WriteLine("Первое auto");
             Auto_show first_auto = new Auto_show();
             Engine autoeng = new Engine(4, 2, 100);
 
             first_auto.init("Lada", "granta", 300, 150, 2017, autoeng);
             first_auto.display();
 
-            System.Console.WriteLine("Second auto");
+            Console.WriteLine("Second auto");
             Auto_show second_auto = new Auto_show();
             second_auto.read();
             second_auto.display();
