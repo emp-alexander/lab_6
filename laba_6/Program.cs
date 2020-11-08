@@ -99,7 +99,8 @@ namespace laba_6
     {
         private int cylinders;
         private int capacity;
-        private int power;
+        public int power;
+
         public Engine()
         {
 
@@ -127,6 +128,36 @@ namespace laba_6
 
         
     }
+    struct Engine_st
+    {
+        private int cylinders;
+        private int capacity;
+        public int power;
+        public Engine_st(int cylinders, int capacity, int power)
+        {
+            this.cylinders = cylinders;
+            this.capacity = capacity;
+            this.power = power;
+        }
+
+        public String GetInfo()
+        {
+            return ("Engine: cylinders = " + cylinders + " capacity  = " + capacity + " power = " + power);
+        }
+        public void Read()
+        {
+            Console.Write("Enter the number of cylinders:");
+            this.cylinders = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter capacity:");
+            this.capacity = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter power:");
+            this.power = Convert.ToInt32(Console.ReadLine());
+        }
+
+
+    }
+
+
 
 
     class Program
@@ -168,6 +199,29 @@ namespace laba_6
             System.Console.WriteLine("Array[2].Auto++::");
             array[1] = array[2]++;
             array[1].display();
+
+
+
+            //Класс & струтура
+            Engine eng_class = new Engine(4, 2, 100);
+
+            SuperPower(eng_class);
+            System.Console.WriteLine("class:: power: {0}", eng_class.power);
+
+            Engine_st eng_struct = new Engine_st(4, 2, 100);
+
+            SuperPower(eng_struct);
+            System.Console.WriteLine("struct:: power: {0}", eng_struct.power);
         }
+        public static void SuperPower(Engine e)
+        {
+            e.power++;
+        }
+
+        public static void SuperPower(Engine_st e)
+        {
+            e.power++;
+        }
+
     }
 }
