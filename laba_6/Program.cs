@@ -12,6 +12,18 @@ namespace laba_6
         private int autoYear;
         private Engine autoeng1 = new Engine();
 
+        public Auto_show()
+        {
+
+        }
+        public Auto_show(string brend, string name, int cost, int max_speed, int year)
+        {
+            this.autoBrand = brend;
+            this.autoName = name;
+            this.autoCost = cost;
+            this.autoMax_speed = max_speed;
+            this.autoYear = year;
+        }
 
         public void init(String brend, String name, int cost, int max_speed, int year, Engine eng1)
         {
@@ -23,7 +35,14 @@ namespace laba_6
             this.autoeng1 = eng1;
         }
 
-
+        public void init_not_eng(String brend, String name, int cost, int max_speed, int year)
+        {
+            this.autoBrand = brend;
+            this.autoName = name;
+            this.autoCost = cost;
+            this.autoMax_speed = max_speed;
+            this.autoYear = year;
+        }
         public void display()
         {
             Console.WriteLine("Brand: " + autoBrand);
@@ -49,6 +68,31 @@ namespace laba_6
             Console.Write("Year: ");
             this.autoYear = Convert.ToInt32(Console.ReadLine());
             autoeng1.Read();
+        }
+
+        public void CostRef(ref int autoCost)
+        {
+            autoCost = this.autoCost;
+        }
+
+        public void CostOut(out int autoCost)
+        {
+            autoCost = this.autoCost;
+        }
+        public static Auto_show operator +(Auto_show a, Auto_show b)
+        {
+
+            return new Auto_show(a.autoBrand, a.autoName, a.autoCost + b.autoCost
+                , a.autoMax_speed + b.autoMax_speed,
+                a.autoYear + b.autoYear);
+        }
+
+
+        public static Auto_show operator ++(Auto_show a)
+        {
+            return new Auto_show(a.autoBrand, a.autoName, a.autoCost + a.autoCost,
+                a.autoMax_speed + a.autoMax_speed,
+                a.autoYear + a.autoYear);
         }
     }
     class Engine
@@ -80,12 +124,14 @@ namespace laba_6
             Console.Write("Enter power:");
             this.power = Convert.ToInt32(Console.ReadLine());
         }
+
+        
     }
 
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Первое auto");
             Auto_show first_auto = new Auto_show();
@@ -98,6 +144,30 @@ namespace laba_6
             Auto_show second_auto = new Auto_show();
             second_auto.read();
             second_auto.display();
+
+            Auto_show[] array = new Auto_show[10];
+            for (int i = 0; i < 10; i++)
+            {
+                array[i] = new Auto_show();
+                array[i].init_not_eng("Lada", "preora", 300, 150, 2012); ;
+            }
+            System.Console.WriteLine("Array[0]::");
+            array[0].display();
+
+            int cost_1 = 0;
+            array[1].CostRef(ref cost_1);
+            System.Console.WriteLine("reference::Cost: {0}", cost_1);
+
+            int cost_2;
+            array[1].CostOut(out cost_2);
+            System.Console.WriteLine("out::Cost: {0}", cost_2);
+
+            System.Console.WriteLine("Sum array[2] and array[3]:");
+            array[1] = array[2] + array[3];
+            array[1].display();
+            System.Console.WriteLine("Array[2].Auto++::");
+            array[1] = array[2]++;
+            array[1].display();
         }
     }
 }
