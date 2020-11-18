@@ -53,7 +53,7 @@ namespace laba_6
             Console.WriteLine(autoeng1.GetInfo());
         }
 
-        
+
         public void read()
         {
 
@@ -90,8 +90,7 @@ namespace laba_6
 
         public static Auto_show operator ++(Auto_show a)
         {
-            return new Auto_show(a.autoBrand, a.autoName, 
-                a.autoCost + a.autoCost,
+            return new Auto_show(a.autoBrand, a.autoName, a.autoCost + a.autoCost,
                 a.autoMax_speed + a.autoMax_speed,
                 a.autoYear + a.autoYear);
         }
@@ -100,7 +99,8 @@ namespace laba_6
     {
         private int cylinders;
         private int capacity;
-        private int power;
+        public int power;
+
         public Engine()
         {
 
@@ -116,7 +116,7 @@ namespace laba_6
         {
             return ("Engine: cylinders = " + cylinders + " capacity  = " + capacity + " power = " + power);
         }
-       public void Read()
+        public void Read()
         {
             Console.Write("Enter the number of cylinders:");
             this.cylinders = Convert.ToInt32(Console.ReadLine());
@@ -126,8 +126,38 @@ namespace laba_6
             this.power = Convert.ToInt32(Console.ReadLine());
         }
 
-        
+
     }
+    struct Engine_st
+    {
+        private int cylinders;
+        private int capacity;
+        public int power;
+        public Engine_st(int cylinders, int capacity, int power)
+        {
+            this.cylinders = cylinders;
+            this.capacity = capacity;
+            this.power = power;
+        }
+
+        public String GetInfo()
+        {
+            return ("Engine: cylinders = " + cylinders + " capacity  = " + capacity + " power = " + power);
+        }
+        public void Read()
+        {
+            Console.Write("Enter the number of cylinders:");
+            this.cylinders = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter capacity:");
+            this.capacity = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter power:");
+            this.power = Convert.ToInt32(Console.ReadLine());
+        }
+
+
+    }
+
+
 
 
     class Program
@@ -157,18 +187,41 @@ namespace laba_6
 
             int cost_1 = 0;
             array[1].CostRef(ref cost_1);
-            System.Console.WriteLine("\nreference::Cost: {0}", cost_1);
+            System.Console.WriteLine("reference::Cost: {0}", cost_1);
 
             int cost_2;
             array[1].CostOut(out cost_2);
             System.Console.WriteLine("out::Cost: {0}", cost_2);
 
-            System.Console.WriteLine("\nSum array[2] and array[3]:");
+            System.Console.WriteLine("Sum array[2] and array[3]:");
             array[1] = array[2] + array[3];
             array[1].display();
-            System.Console.WriteLine("\nArray[2].Auto++::");
-            array[2]++;
-            array[2].display();
+            System.Console.WriteLine("Array[2].Auto++::");
+            array[1] = array[2]++;
+            array[1].display();
+
+
+
+            //Класс & струтура
+            Engine eng_class = new Engine(4, 2, 100);
+
+            SuperPower(eng_class);
+            System.Console.WriteLine("class:: power: {0}", eng_class.power);
+
+            Engine_st eng_struct = new Engine_st(4, 2, 100);
+
+            SuperPower(eng_struct);
+            System.Console.WriteLine("struct:: power: {0}", eng_struct.power);
         }
+        public static void SuperPower(Engine e)
+        {
+            e.power++;
+        }
+
+        public static void SuperPower(Engine_st e)
+        {
+            e.power++;
+        }
+
     }
 }
