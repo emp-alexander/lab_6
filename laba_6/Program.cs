@@ -5,6 +5,7 @@ namespace laba_6
 
     class Auto_show
     {
+        private static int racing = 7;
         private String autoBrand;
         private String autoName;
         private int autoCost;
@@ -94,6 +95,16 @@ namespace laba_6
                 a.autoMax_speed + a.autoMax_speed,
                 a.autoYear + a.autoYear);
         }
+
+        public static int Racing()
+        {
+            return racing;
+        }
+
+        public static void Racingset(int r)
+        {
+            racing = r;
+        }
     }
     class Engine
     {
@@ -125,7 +136,7 @@ namespace laba_6
             this.power = Convert.ToInt32(Console.ReadLine());
         }
 
-        
+
     }
 
 
@@ -168,6 +179,9 @@ namespace laba_6
             System.Console.WriteLine("Array[2].Auto++::");
             array[1] = array[2]++;
             array[1].display();
+
+            Auto_show.Racingset(4);
+            System.Console.WriteLine("Acceleration to 100 : {0}", Auto_show.Racing());
         }
     }
 }
