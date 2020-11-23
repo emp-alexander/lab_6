@@ -54,7 +54,7 @@ namespace laba_6
             Console.WriteLine(autoeng1.GetInfo());
         }
 
-        
+
         public void read()
         {
 
@@ -111,22 +111,39 @@ namespace laba_6
         private int cylinders;
         private int capacity;
         private int power;
-        public Engine()
-        {
 
+        // с одним параметром
+        public Engine(int power)
+        {
+            cylinders = 6;
+            capacity = 3;
+            this.power = power;
+            System.Console.WriteLine("Конструктор с одним параметром");
         }
+        //со всеми параметрами
         public Engine(int cylinders, int capacity, int power)
         {
             this.cylinders = cylinders;
             this.capacity = capacity;
             this.power = power;
+            System.Console.WriteLine("Конструктор со всеми парметрами");
         }
+        //конструктор без параметров
+        public Engine()
+        {
+            cylinders = 6;
+            capacity = 3;
+            power = 5;
+            System.Console.WriteLine("Конструктор без параметров");
+        }
+
+
 
         public String GetInfo()
         {
             return ("Engine: cylinders = " + cylinders + " capacity  = " + capacity + " power = " + power);
         }
-       public void Read()
+        public void Read()
         {
             Console.Write("Enter the number of cylinders:");
             this.cylinders = Convert.ToInt32(Console.ReadLine());
@@ -144,44 +161,19 @@ namespace laba_6
     {
         static void Main()
         {
-            Console.WriteLine("Первое auto");
-            Auto_show first_auto = new Auto_show();
-            Engine autoeng = new Engine(4, 2, 100);
+            Engine a1 = new Engine();
+            Console.WriteLine(a1.GetInfo());
+            Engine a2 = new Engine(2014);
+            Console.WriteLine(a2.GetInfo());
+            Engine a3 = new Engine(4, 5, 7);
+            Console.WriteLine(a3.GetInfo());
 
-            first_auto.init("Lada", "granta", 300, 150, 2017, autoeng);
-            first_auto.display();
-
-            Console.WriteLine("Second auto");
-            Auto_show second_auto = new Auto_show();
-            second_auto.read();
-            second_auto.display();
-
-            Auto_show[] array = new Auto_show[10];
-            for (int i = 0; i < 10; i++)
+            Engine[] arr = new Engine[3];
+            for (int i = 0; i < arr.Length; i++)
             {
-                array[i] = new Auto_show();
-                array[i].init_not_eng("Lada", "preora", 300, 150, 2012); ;
+                arr[i] = new Engine(2015);
+                Console.WriteLine(arr[i].GetInfo());
             }
-            System.Console.WriteLine("Array[0]::");
-            array[0].display();
-
-            int cost_1 = 0;
-            array[1].CostRef(ref cost_1);
-            System.Console.WriteLine("reference::Cost: {0}", cost_1);
-
-            int cost_2;
-            array[1].CostOut(out cost_2);
-            System.Console.WriteLine("out::Cost: {0}", cost_2);
-
-            System.Console.WriteLine("Sum array[2] and array[3]:");
-            array[1] = array[2] + array[3];
-            array[1].display();
-            System.Console.WriteLine("Array[2].Auto++::");
-            array[1] = array[2]++;
-            array[1].display();
-
-            Auto_show.Racingset(4);
-            System.Console.WriteLine("Acceleration to 100 : {0}", Auto_show.Racing());
         }
     }
 }
