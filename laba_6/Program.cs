@@ -63,9 +63,29 @@ namespace laba_6
             Console.WriteLine("Enter name: ");
             this.autoName = System.Console.ReadLine();
             Console.Write("Cost: ");
-            this.autoCost = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                this.autoCost = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Вы ввели не число!");
+            }
+           
             Console.Write("Max speed: ");
-            this.autoMax_speed = Convert.ToInt32(Console.ReadLine());
+            try
+            {
+                this.autoMax_speed = Convert.ToInt32(Console.ReadLine());
+                if(this.autoMax_speed < 0)
+                    throw new Exception("Скорость не может быть отрицательной");
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine($"Ошибка: {e.Message}");
+            }
+            
+            
             Console.Write("Year: ");
             this.autoYear = Convert.ToInt32(Console.ReadLine());
             autoeng1.Read();
@@ -161,19 +181,9 @@ namespace laba_6
     {
         static void Main()
         {
-            Engine a1 = new Engine();
-            Console.WriteLine(a1.GetInfo());
-            Engine a2 = new Engine(2014);
-            Console.WriteLine(a2.GetInfo());
-            Engine a3 = new Engine(4, 5, 7);
-            Console.WriteLine(a3.GetInfo());
-
-            Engine[] arr = new Engine[3];
-            for (int i = 0; i < arr.Length; i++)
-            {
-                arr[i] = new Engine(2015);
-                Console.WriteLine(arr[i].GetInfo());
-            }
+            Auto_show second_auto = new Auto_show();
+            second_auto.read();
+            second_auto.display();
         }
     }
 }
