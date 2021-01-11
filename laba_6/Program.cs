@@ -185,25 +185,25 @@ namespace laba_6
             second_auto.read();
             second_auto.display();
 
-            
 
-            ////One demensional array
 
-            //Console.Write("Enter one demensional array length: ");
-            //int length = int.Parse(Console.ReadLine());
-            //Auto_show[] odinarray = new Auto_show[length];
-            //for (int i = 0; i < odinarray.Length; i++)
-            //{
-            //    odinarray[i] = new Auto_show();
-            //   // odinarray[i].Engine = w1;
-            //    odinarray[i].read();
-            //}
+            //One demensional array
 
-            //foreach (Auto_show a in odinarray)
-            //{
-            //    Console.WriteLine("Object::warrior: ");
-            //    a.display();
-            //}
+            Console.Write("Enter one demensional array length: ");
+            int length = int.Parse(Console.ReadLine());
+            Auto_show[] odinarray = new Auto_show[length];
+            for (int i = 0; i < odinarray.Length; i++)
+            {
+                odinarray[i] = new Auto_show();
+                // odinarray[i].Engine = w1;
+                odinarray[i].read();
+            }
+
+            foreach (Auto_show a in odinarray)
+            {
+                Console.WriteLine("Object::warrior: ");
+                a.display();
+            }
 
             //двумерный
 
